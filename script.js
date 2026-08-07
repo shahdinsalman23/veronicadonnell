@@ -557,794 +557,322 @@
      It is NOT connected to a real calendar API.
      ========================================================= */
 
-  function initCalendar() {
-    const calendarGrid =
-      document.getElementById("calGrid");
+function initCalendar() {
+  const calendarGrid = document.getElementById("calGrid");
+  const calendarMonth = document.getElementById("calMonth");
+  const previousButton = document.getElementById("calPrev");
+  const nextButton = document.getElementById("calNext");
+  const dateInput = document.getElementById("fDate");
 
-    const calendarMonth =
-      document.getElementById("calMonth");
+  if (!calendarGrid || !calendarMonth || !previousButton || !nextButton) {
+    return;
+  }
 
-    const previousButton =
-      document.getElementById("calPrev");
+  /* Calendar state */
+  const today = new Date();
+  let currentMonth = today.getMonth();
+  let currentYear = today.getFullYear();
+  let selectedDate = null;
 
-    const nextButton =
-      document.getElementById("calNext");
+  /* Month names */
+  const monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
 
-    const dateInput =
-      document.getElementById("fDate");
+  /* Helper: Format selected date for human display */
+  function formatReadableDate(year, month, day) {
+    return monthNames[month] + " " + day + ", " + year;
+  }
 
+  /* Determine whether a day is in the past */
+  function isPastDate(year, month, day) {
+    const date = new Date(year, month, day);
+    const todayOnly = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate()
+    );
+    return date < todayOnly;
+  }
 
-    if (
-      !calendarGrid ||
-      !calendarMonth ||
-      !previousButton ||
-      !nextButton
-    ) {
-      return;
+  /* 
+    Determine availability:
+    - Past dates = unavailable
+    - Saturday (6) & Sunday (0) = unavailable
+    - Monday to Friday = available
+  */
+  function getDateStatus(year, month, day) {
+    const date = new Date(year, month, day);
+    const dayOfWeek = date.getDay();
+
+    if (isPastDate(year, month, day)) {
+      return "past";
     }
 
+    // Weekend check (Sunday = 0, Saturday = 6)
+    if (dayOfWeek === 0 || dayOfWeek === 6) {
+      return "full";
+    }
 
-    /*
-      Calendar state.
-    */
+    return "available";
+  }
 
-    const today = new Date();
+  /* Render calendar */
+  function renderCalendar() {
+    calendarGrid.innerHTML = "";
 
-    let currentMonth =
-      today.getMonth();
+    calendarMonth.textContent = monthNames[currentMonth] + " " + currentYear;
 
-    let currentYear =
-      today.getFullYear();
+    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-    let selectedDate = null;
+    /* Empty cells before first day */
+    for (let i = 0; i < firstDay; i++) {
+      const emptyCell = document.createElement("span");
+      emptyCell.className = "qp-cal-day is-empty";
+      calendarGrid.appendChild(emptyCell);
+    }
 
+    /* Calendar days */
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dayElement = document.createElement("button");
+      dayElement.type = "button";
+      dayElement.className = "qp-cal-day";
 
-    /*
-      Demo fully booked dates.
+      const status = getDateStatus(currentYear, currentMonth, day);
 
-      Format:
-
-      "YYYY-MM-DD"
-
-      You can replace these later with real
-      Google Calendar / Calendly / backend data.
-    */
-
-    const fullyBookedDates = new Set([
-      "2026-08-06",
-      "2026-08-12",
-      "2026-08-19",
-      "2026-08-27",
-
-      "2026-09-03",
-      "2026-09-11",
-      "2026-09-22",
-
-      "2026-10-07",
-      "2026-10-16",
-      "2026-10-28"
-    ]);
-
-
-    /*
-      Month names.
-    */
-
-    const monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ];
-
-
-    /*
-      Helper:
-      Convert number into YYYY-MM-DD.
-    */
-
-    function formatDate(year, month, day) {
-      const formattedMonth =
-        String(month + 1).padStart(2, "0");
-
-      const formattedDay =
-        String(day).padStart(2, "0");
-
-      return (
-        year +
-        "-" +
-        formattedMonth +
-        "-" +
-        formattedDay
+      dayElement.textContent = day;
+      dayElement.setAttribute(
+        "aria-label",
+        formatReadableDate(currentYear, currentMonth, day)
       );
-    }
 
-
-    /*
-      Helper:
-      Format selected date for human display.
-    */
-
-    function formatReadableDate(
-      year,
-      month,
-      day
-    ) {
-      return (
-        monthNames[month] +
-        " " +
-        day +
-        ", " +
-        year
-      );
-    }
-
-
-    /*
-      Determine whether a day is in the past.
-    */
-
-    function isPastDate(
-      year,
-      month,
-      day
-    ) {
-      const date =
-        new Date(
-          year,
-          month,
-          day
-        );
-
-      /*
-        Compare only date portions.
-      */
-
-      const todayOnly =
-        new Date(
-          today.getFullYear(),
-          today.getMonth(),
-          today.getDate()
-        );
-
-      return date < todayOnly;
-    }
-
-
-    /*
-      Determine availability.
-
-      Current demo logic:
-
-      - Past dates = unavailable
-      - Saturday/Sunday = unavailable
-      - Explicitly booked dates = fully booked
-      - Monday-Friday = available
-    */
-
-    function getDateStatus(
-      year,
-      month,
-      day
-    ) {
-      const date =
-        new Date(
-          year,
-          month,
-          day
-        );
-
-      const dayOfWeek =
-        date.getDay();
-
-      const dateKey =
-        formatDate(
-          year,
-          month,
-          day
-        );
-
-
-      if (isPastDate(year, month, day)) {
-        return "past";
-      }
-
-
-      if (
-        dayOfWeek === 0 ||
-        dayOfWeek === 6
-      ) {
-        return "full";
-      }
-
-
-      if (
-        fullyBookedDates.has(dateKey)
-      ) {
-        return "full";
-      }
-
-
-      return "available";
-    }
-
-
-    /*
-      Render calendar.
-    */
-
-    function renderCalendar() {
-      calendarGrid.innerHTML = "";
-
-
-      /*
-        Update month title.
-      */
-
-      calendarMonth.textContent =
-        monthNames[currentMonth] +
-        " " +
-        currentYear;
-
-
-      /*
-        First day of month.
-
-        getDay():
-        0 = Sunday
-        1 = Monday
-        ...
-        6 = Saturday
-      */
-
-      const firstDay =
-        new Date(
-          currentYear,
-          currentMonth,
-          1
-        ).getDay();
-
-
-      /*
-        Number of days in current month.
-
-        Setting day to 0 gives us
-        the last day of previous month.
-      */
-
-      const daysInMonth =
-        new Date(
-          currentYear,
-          currentMonth + 1,
-          0
-        ).getDate();
-
-
-      /*
-        Empty cells before first day.
-      */
-
-      for (
-        let i = 0;
-        i < firstDay;
-        i++
-      ) {
-        const emptyCell =
-          document.createElement("span");
-
-        emptyCell.className =
-          "qp-cal-day is-empty";
-
-        calendarGrid.appendChild(
-          emptyCell
-        );
-      }
-
-
-      /*
-        Actual calendar days.
-      */
-
-      for (
-        let day = 1;
-        day <= daysInMonth;
-        day++
-      ) {
-        const dayElement =
-          document.createElement("button");
-
-        dayElement.type = "button";
-
-        dayElement.className =
-          "qp-cal-day";
-
-
-        /*
-          Determine status.
-        */
-
-        const status =
-          getDateStatus(
-            currentYear,
-            currentMonth,
-            day
-          );
-
-
-        /*
-          Common attributes.
-        */
-
-        dayElement.textContent = day;
-
+      /* Available date (Monday - Friday) */
+      if (status === "available") {
+        dayElement.classList.add("is-available");
         dayElement.setAttribute(
           "aria-label",
-          formatReadableDate(
-            currentYear,
-            currentMonth,
-            day
-          )
+          formatReadableDate(currentYear, currentMonth, day) + " - Available"
         );
 
-
-        /*
-          Available date.
-        */
-
-        if (status === "available") {
-          dayElement.classList.add(
-            "is-available"
-          );
-
-
-          dayElement.setAttribute(
-            "aria-label",
-            formatReadableDate(
-              currentYear,
-              currentMonth,
-              day
-            ) + " - Available"
-          );
-
-
-          dayElement.addEventListener(
-            "click",
-            function () {
-              selectDate(
-                currentYear,
-                currentMonth,
-                day
-              );
-            }
-          );
-        }
-
-
-        /*
-          Fully booked / unavailable date.
-        */
-
-      /* Fully booked / unavailable date */
-if (status === "full" || status === "past") {
-  dayElement.classList.add("is-full");
-  dayElement.disabled = true; // Added standard HTML disabled property
-  dayElement.setAttribute("aria-disabled", "true");
-}
-
-        /*
-          Check whether this is
-          currently selected date.
-        */
-
-        if (
-          selectedDate &&
-          selectedDate.year === currentYear &&
-          selectedDate.month === currentMonth &&
-          selectedDate.day === day
-        ) {
-          dayElement.classList.add(
-            "is-selected"
-          );
-        }
-
-
-        calendarGrid.appendChild(
-          dayElement
-        );
+        dayElement.addEventListener("click", function () {
+          selectDate(currentYear, currentMonth, day);
+        });
       }
+
+      /* Weekend or Past date */
+      if (status === "full" || status === "past") {
+        dayElement.classList.add("is-full");
+        dayElement.disabled = true;
+        dayElement.setAttribute("aria-disabled", "true");
+      }
+
+      /* Selected state check */
+      if (
+        selectedDate &&
+        selectedDate.year === currentYear &&
+        selectedDate.month === currentMonth &&
+        selectedDate.day === day
+      ) {
+        dayElement.classList.add("is-selected");
+      }
+
+      calendarGrid.appendChild(dayElement);
     }
-
-
-    /*
-      Select calendar date.
-    */
-
-    function selectDate(
-      year,
-      month,
-      day
-    ) {
-      selectedDate = {
-        year: year,
-        month: month,
-        day: day
-      };
-
-
-      /*
-        Update form field.
-      */
-
-      if (dateInput) {
-        dateInput.value =
-          formatReadableDate(
-            year,
-            month,
-            day
-          );
-      }
-
-
-      /*
-        Re-render calendar so
-        selected state appears.
-      */
-
-      renderCalendar();
-
-
-      /*
-        Optional subtle focus.
-      */
-
-      if (dateInput) {
-        dateInput.focus();
-      }
-    }
-
-
-    /*
-      Previous month.
-    */
-
-    previousButton.addEventListener(
-      "click",
-      function () {
-        currentMonth--;
-
-        if (currentMonth < 0) {
-          currentMonth = 11;
-          currentYear--;
-        }
-
-        renderCalendar();
-      }
-    );
-
-
-    /*
-      Next month.
-    */
-
-    nextButton.addEventListener(
-      "click",
-      function () {
-        currentMonth++;
-
-        if (currentMonth > 11) {
-          currentMonth = 0;
-          currentYear++;
-        }
-
-        renderCalendar();
-      }
-    );
-
-
-    /*
-      Initial calendar render.
-    */
-
-    renderCalendar();
   }
 
+  /* Select calendar date */
+  function selectDate(year, month, day) {
+    selectedDate = { year: year, month: month, day: day };
 
-  /* =========================================================
-     10. BOOKING FORM
-     ---------------------------------------------------------
-     Handles:
-     - Browser validation
-     - Selected date requirement
-     - Loading state
-     - Success message
-     - Form reset
+    if (dateInput) {
+      dateInput.value = formatReadableDate(year, month, day);
+    }
 
-     IMPORTANT:
-     No backend is connected here.
-     This is a frontend demonstration only.
-     ========================================================= */
+    renderCalendar();
 
-  function initBookingForm() {
-    const bookingForm =
-      document.getElementById("bookingForm");
+    if (dateInput) {
+      dateInput.focus();
+    }
+  }
 
-    const formNote =
-      document.getElementById("formNote");
+  /* Navigations */
+  previousButton.addEventListener("click", function () {
+    currentMonth--;
+    if (currentMonth < 0) {
+      currentMonth = 11;
+      currentYear--;
+    }
+    renderCalendar();
+  });
+
+  nextButton.addEventListener("click", function () {
+    currentMonth++;
+    if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear++;
+    }
+    renderCalendar();
+  });
+
+  renderCalendar();
+}
 
 
-    if (!bookingForm) {
+/* =========================================================
+   10. BOOKING FORM & MODAL HANDLING
+   ========================================================= */
+
+function initBookingForm() {
+  const bookingForm = document.getElementById("bookingForm");
+  const formNote = document.getElementById("formNote");
+
+  // Modal elements
+  const modal = document.getElementById("bookingModal");
+  const modalOverlay = document.getElementById("modalOverlay");
+  const modalCloseBtn = document.getElementById("modalCloseBtn");
+  const modalUserName = document.getElementById("modalUserName");
+  const modalUserDate = document.getElementById("modalUserDate");
+
+  if (!bookingForm) {
+    return;
+  }
+
+  /*
+    Form Submit Event
+  */
+  bookingForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    /* Browser standard validation */
+    if (!bookingForm.checkValidity()) {
+      bookingForm.reportValidity();
       return;
     }
 
+    /* Get form values */
+    const nameField = document.getElementById("fName");
+    const emailField = document.getElementById("fEmail");
+    const levelField = document.getElementById("fLevel");
+    const dateField = document.getElementById("fDate");
 
-    bookingForm.addEventListener(
-      "submit",
-      function (event) {
-        event.preventDefault();
+    const name = nameField ? nameField.value.trim() : "";
+    const email = emailField ? emailField.value.trim() : "";
+    const level = levelField ? levelField.value : "";
+    const selectedDate = dateField ? dateField.value.trim() : "";
 
+    /* Custom Field Validations */
+    if (!name) {
+      showFormMessage("Please enter your full name.", "error");
+      if (nameField) nameField.focus();
+      return;
+    }
 
-        /*
-          Run browser validation.
-        */
+    if (!isValidEmail(email)) {
+      showFormMessage("Please enter a valid email address.", "error");
+      if (emailField) emailField.focus();
+      return;
+    }
 
-        if (!bookingForm.checkValidity()) {
-          bookingForm.reportValidity();
+    if (!level) {
+      showFormMessage("Please select your executive level.", "error");
+      if (levelField) levelField.focus();
+      return;
+    }
 
-          return;
-        }
+    if (!selectedDate) {
+      showFormMessage("Please choose an available date from the calendar.", "error");
+      if (dateField) dateField.focus();
+      return;
+    }
 
+    /* Clear error messages if validation passes */
+    showFormMessage("", "");
 
-        /*
-          Get form fields.
-        */
+    /* Submit Button Loading State */
+    const submitButton = bookingForm.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton ? submitButton.innerHTML : "";
 
-        const nameField =
-          document.getElementById("fName");
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+    }
 
-        const emailField =
-          document.getElementById("fEmail");
+    /* Simulate API / Webhook Submission (1.2 Seconds Delay) */
+    setTimeout(function () {
+      
+      /* Populate dynamic data into Modal */
+      if (modalUserName) modalUserName.textContent = name;
+      if (modalUserDate) modalUserDate.textContent = selectedDate;
 
-        const levelField =
-          document.getElementById("fLevel");
-
-        const dateField =
-          document.getElementById("fDate");
-
-
-        const name =
-          nameField
-            ? nameField.value.trim()
-            : "";
-
-        const email =
-          emailField
-            ? emailField.value.trim()
-            : "";
-
-        const level =
-          levelField
-            ? levelField.value
-            : "";
-
-        const selectedDate =
-          dateField
-            ? dateField.value.trim()
-            : "";
-
-
-        /*
-          Additional validation.
-        */
-
-        if (!name) {
-          showFormMessage(
-            "Please enter your full name.",
-            "error"
-          );
-
-          if (nameField) {
-            nameField.focus();
-          }
-
-          return;
-        }
-
-
-        if (!isValidEmail(email)) {
-          showFormMessage(
-            "Please enter a valid email address.",
-            "error"
-          );
-
-          if (emailField) {
-            emailField.focus();
-          }
-
-          return;
-        }
-
-
-        if (!level) {
-          showFormMessage(
-            "Please select your executive level.",
-            "error"
-          );
-
-          if (levelField) {
-            levelField.focus();
-          }
-
-          return;
-        }
-
-
-        if (!selectedDate) {
-          showFormMessage(
-            "Please choose an available date from the calendar.",
-            "error"
-          );
-
-          if (dateField) {
-            dateField.focus();
-          }
-
-          return;
-        }
-
-
-        /*
-          Find submit button.
-        */
-
-        const submitButton =
-          bookingForm.querySelector(
-            'button[type="submit"]'
-          );
-
-
-        const originalButtonText =
-          submitButton
-            ? submitButton.innerHTML
-            : "";
-
-
-        /*
-          Loading state.
-        */
-
-        if (submitButton) {
-          submitButton.disabled = true;
-
-          submitButton.innerHTML =
-            '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
-        }
-
-
-        showFormMessage(
-          "Submitting your discovery call request...",
-          "loading"
-        );
-
-
-        /*
-          Simulate request.
-
-          Replace this section later with:
-          - fetch()
-          - API request
-          - Form backend
-          - n8n webhook
-          - Laravel endpoint
-          - Google Calendar integration
-        */
-
-        setTimeout(function () {
-
-          /*
-            Frontend success state.
-          */
-
-          showFormMessage(
-            "Thank you, " +
-            escapeHtml(name) +
-            ". Your discovery call request for " +
-            escapeHtml(selectedDate) +
-            " has been received. Veronica will confirm your session personally within one business day.",
-            "success"
-          );
-
-
-          /*
-            Reset form fields.
-          */
-
-          bookingForm.reset();
-
-
-          /*
-            Restore button.
-          */
-
-          if (submitButton) {
-            submitButton.disabled = false;
-            submitButton.innerHTML =
-              originalButtonText;
-          }
-
-        }, 1200);
-      }
-    );
-
-
-    /*
-      Display form message.
-    */
-
-    function showFormMessage(
-      message,
-      type
-    ) {
-      if (!formNote) {
-        return;
+      /* Show Executive Pop-up Modal */
+      if (modal) {
+        modal.classList.add("is-active");
+        modal.setAttribute("aria-hidden", "false");
       }
 
+      /* Reset Form & Date Selection */
+      bookingForm.reset();
 
-      formNote.textContent =
-        message;
-
-
-      /*
-        Remove previous state classes.
-      */
-
-      formNote.classList.remove(
-        "is-success",
-        "is-error",
-        "is-loading"
-      );
-
-
-      if (type === "success") {
-        formNote.classList.add(
-          "is-success"
-        );
+      /* Restore Submit Button State */
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalButtonText;
       }
 
+    }, 1200);
+  });
 
-      if (type === "error") {
-        formNote.classList.add(
-          "is-error"
-        );
-      }
+  /*
+    Helper: Display inline form errors/messages
+  */
+  function showFormMessage(message, type) {
+    if (!formNote) return;
 
+    formNote.textContent = message;
+    formNote.classList.remove("is-success", "is-error", "is-loading");
 
-      if (type === "loading") {
-        formNote.classList.add(
-          "is-loading"
-        );
-      }
+    if (type === "error") {
+      formNote.classList.add("is-error");
+    } else if (type === "loading") {
+      formNote.classList.add("is-loading");
     }
   }
 
-
-  /* =========================================================
-     11. EMAIL VALIDATION
-     ========================================================= */
-
-  function isValidEmail(email) {
-    const emailPattern =
-      /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    return emailPattern.test(email);
+  /*
+    Modal Close Logic
+  */
+  function closeModal() {
+    if (modal) {
+      modal.classList.remove("is-active");
+      modal.setAttribute("aria-hidden", "true");
+    }
   }
+
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener("click", closeModal);
+  }
+
+  if (modalOverlay) {
+    modalOverlay.addEventListener("click", closeModal);
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && modal && modal.classList.contains("is-active")) {
+      closeModal();
+    }
+  });
+}
+
+/* =========================================================
+   11. EMAIL VALIDATION HELPER
+   ========================================================= */
+
+function isValidEmail(email) {
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailPattern.test(email);
+}
 
 
   /* =========================================================

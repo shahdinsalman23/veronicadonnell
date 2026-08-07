@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiet Power | Veronica O'Donnell — Executive Coaching</title>
+<meta name="description" content="Quiet Power with Veronica O'Donnell — executive coaching for leaders reclaiming the power and control that's already theirs. Perth, Western Australia & Global.">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Bootstrap 5.3 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome 6 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Slick Carousel -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+<!-- AOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+<!-- Custom -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ TOP ANNOUNCEMENT BAR ============ -->
+<div class="qp-announce" aria-label="Announcement">
+  <div class="qp-announce__track">
+    
+    <!-- Original Content -->
+    <div class="qp-announce__content">
+      <span>COMPLIMENTARY 15-MINUTE DISCOVERY CONVERSATIONS — LIMITED AVAILABILITY THIS QUARTER</span>
+      <span class="qp-announce__dot" aria-hidden="true">&#9670;</span>
+      <span>PERTH, WESTERN AUSTRALIA &amp; GLOBAL, BY VIDEO</span>
+      <span class="qp-announce__dot" aria-hidden="true">&#9670;</span>
+    </div>
+
+    <!-- Duplicate Set for Seamless Infinite Loop -->
+    <div class="qp-announce__content" aria-hidden="true">
+      <span>COMPLIMENTARY 15-MINUTE DISCOVERY CONVERSATIONS — LIMITED AVAILABILITY THIS QUARTER</span>
+      <span class="qp-announce__dot" aria-hidden="true">&#9670;</span>
+      <span>PERTH, WESTERN AUSTRALIA &amp; GLOBAL, BY VIDEO</span>
+      <span class="qp-announce__dot" aria-hidden="true">&#9670;</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="qp-header" id="qpHeader">
+  <div class="container">
+    <div class="qp-header__row">
+
+      <button class="qp-hamburger d-lg-none" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <a href="#top" class="qp-brand">
+        <span class="qp-brand__mark">
+          <img src="images/logo.png" alt="Quiet Power Logo">
+        </span>
+        <span class="qp-brand__text">
+          <span class="qp-brand__name">Quiet Power</span>
+          <span class="qp-brand__sub">POWER &bull; CONTROL &bull; FREEDOM</span>
+        </span>
+      </a>
+
+      <nav class="qp-nav d-none d-lg-flex">
+        <a href="#philosophy" class="qp-nav__link"><span>Philosophy</span></a>
+        <a href="#pillars" class="qp-nav__link"><span>Pillars</span></a>
+        <a href="#programs" class="qp-nav__link"><span>Programs</span></a>
+        <a href="#booking" class="qp-nav__link"><span>Booking</span></a>
+        <a href="#testimonials" class="qp-nav__link"><span>Stories</span></a>
+        <a href="#faq" class="qp-nav__link"><span>FAQ</span></a>
+      </nav>
+
+      <div class="qp-header__actions">
+        <button class="qp-theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">
+          <i class="fa-solid fa-sun qp-theme-toggle__icon qp-theme-toggle__icon--sun"></i>
+          <i class="fa-solid fa-moon qp-theme-toggle__icon qp-theme-toggle__icon--moon"></i>
+        </button>
+        <a href="#booking" class="qp-btn qp-btn--primary d-none d-md-inline-flex">Book Discovery Call</a>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- ============ OFFCANVAS DRAWER (MOBILE) ============ -->
+<div class="qp-drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="qp-drawer" id="qpDrawer" aria-hidden="true">
+  <div class="qp-drawer__head">
+    <span class="qp-brand__name qp-brand__name--drawer">Quiet Power</span>
+    <button class="qp-drawer__close" id="drawerClose" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <nav class="qp-drawer__nav">
+    <a href="#philosophy" class="qp-drawer__link"><span class="qp-drawer__num">01</span>Philosophy</a>
+    <a href="#pillars" class="qp-drawer__link"><span class="qp-drawer__num">02</span>Pillars</a>
+    <a href="#programs" class="qp-drawer__link"><span class="qp-drawer__num">03</span>Programs</a>
+    <a href="#booking" class="qp-drawer__link"><span class="qp-drawer__num">04</span>Booking</a>
+    <a href="#testimonials" class="qp-drawer__link"><span class="qp-drawer__num">05</span>Stories</a>
+    <a href="#faq" class="qp-drawer__link"><span class="qp-drawer__num">06</span>FAQ</a>
+  </nav>
+  <a href="#booking" class="qp-btn qp-btn--primary qp-drawer__cta">Book Discovery Call</a>
+  <div class="qp-drawer__socials">
+    <a href="https://linkedin.com" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="https://instagram.com" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://facebook.com" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+  </div>
+</aside>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="qp-hero">
+    <svg class="qp-hero__queen-bg" viewBox="0 0 600 700" aria-hidden="true"><use href="#queen-glyph-line"></use></svg>
+    <div class="container">
+      <div class="row align-items-center qp-hero__row">
+        <div class="col-lg-6" data-aos="fade-right" data-aos-duration="900">
+          <p class="qp-eyebrow">EXECUTIVE COACHING &mdash; VERONICA O&rsquo;DONNELL</p>
+          <h1 class="qp-hero__headline">Reclaiming the Power &amp; Control That&rsquo;s Already Yours</h1>
+          <p class="qp-hero__body">Most people don&rsquo;t need more pressure, more fixing, or more self-criticism. They need to reconnect with who they truly are &mdash; and take back control of how they feel, what they think, and what they do.</p>
+          <div class="qp-hero__ctas">
+            <a href="#booking" class="qp-btn qp-btn--primary qp-btn--lg">Reserve Your Session</a>
+            <a href="#philosophy" class="qp-btn qp-btn--ghost qp-btn--lg">Explore Philosophy <i class="fa-solid fa-arrow-down-long"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-6" data-aos="fade-left" data-aos-duration="900" data-aos-delay="150">
+          <div class="qp-booking-card">
+            <div class="qp-booking-card__top">
+              <span class="qp-booking-card__badge"><i class="fa-solid fa-chess-queen"></i> Discovery Call</span>
+              <span class="qp-booking-card__status">Now Booking</span>
+            </div>
+            <h3 class="qp-booking-card__title">A 15-Minute Conversation to See If This Is Yours to Take</h3>
+            <ul class="qp-booking-card__list">
+              <li><i class="fa-solid fa-check"></i> 100% Personalised, No Templates</li>
+              <li><i class="fa-solid fa-check"></i> Strictly 1-on-1, Executive Focus</li>
+              <li><i class="fa-solid fa-check"></i> Video Anywhere in the World</li>
+            </ul>
+            <div class="qp-booking-card__location">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Perth, Western Australia &amp; Global</span>
+            </div>
+            <a href="#booking" class="qp-btn qp-btn--primary qp-btn--block">Check Available Dates</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="qp-hero__scroll" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- ============ PHILOSOPHY / ABOUT ============ -->
+  <section class="qp-section qp-philosophy" id="philosophy">
+    <div class="container">
+      <div class="qp-divider" data-aos="fade-up">
+        <img src="images/logo.png" alt="Divider Image" style="width: 50px; height: auto;">
+      </div>
+      <p class="qp-eyebrow qp-eyebrow--center" data-aos="fade-up">THE BRAND LEGACY</p>
+      <h2 class="qp-h2 qp-h2--center" data-aos="fade-up" data-aos-delay="80">Not Becoming Someone New. Remembering Who You Are.</h2>
+
+      <div class="row qp-philosophy__row">
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="qp-portrait-frame">
+            <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=1000&auto=format&fit=crop" alt="Veronica O'Donnell, Founder of Quiet Power" class="qp-portrait">
+            <span class="qp-portrait-frame__corner qp-portrait-frame__corner--tl"></span>
+            <span class="qp-portrait-frame__corner qp-portrait-frame__corner--br"></span>
+          </div>
+          <p class="qp-signature">Veronica O&rsquo;Donnell</p>
+          <p class="qp-signature__role">Founder, Quiet Power &mdash; Keynote Speaker &amp; Mindset Coach</p>
+        </div>
+
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+          <blockquote class="qp-quote">
+            <span class="qp-quote__mark" aria-hidden="true">&ldquo;</span>
+            Your problem isn&rsquo;t a lack of power. It&rsquo;s that you&rsquo;ve lost full access to it.
+          </blockquote>
+          <p class="qp-philosophy__text">I discovered this after waking from a three-day coma. Because it didn&rsquo;t matter how strong I was, or how capable I was &mdash; I was disconnected. I didn&rsquo;t need an intensive care unit to tell me that.</p>
+          <p class="qp-philosophy__text">Without taking control of my thoughts, my feelings, and my actions, I couldn&rsquo;t access the power that had been there all along. So I took ownership &mdash; and organised what I learned into the Quiet Power System: a practical decision-making method that helps people navigate life with more power, more control, and more freedom.</p>
+
+          <div class="row qp-transform mt-4">
+            <div class="col-6">
+              <div class="qp-transform__card qp-transform__card--before">
+                <span class="qp-transform__label">Before</span>
+                <ul>
+                  <li>Looking outside yourself for answers</li>
+                  <li>Giving your power away</li>
+                  <li>Reacting from old patterns</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="qp-transform__card qp-transform__card--after">
+                <span class="qp-transform__label">After</span>
+                <ul>
+                  <li>Choices made from self-trust</li>
+                  <li>Ownership of thought, feeling, action</li>
+                  <li>Confidence that holds under pressure</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THREE CORE PILLARS ============ -->
+  <section class="qp-section qp-pillars" id="pillars">
+    <div class="container">
+      <div class="qp-divider qp-divider--light" data-aos="fade-up">
+        <img src="images/logo.png" alt="Divider Image" style="width: 50px; height: auto;">
+      </div>
+      <p class="qp-eyebrow qp-eyebrow--center qp-eyebrow--onDark" data-aos="fade-up">THE QUIET POWER SYSTEM</p>
+      <h2 class="qp-h2 qp-h2--center qp-h2--onDark" data-aos="fade-up" data-aos-delay="80">Three Pillars. One Practice.</h2>
+
+      <div class="row qp-pillars__row">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="qp-pillar-card">
+            <span class="qp-pillar-card__badge"><i class="fa-solid fa-chess-king"></i></span>
+            <h3>Power</h3>
+            <p>Recognise where you have been giving your power away, and reclaim what was always yours to hold.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="220">
+          <div class="qp-pillar-card">
+            <span class="qp-pillar-card__badge"><i class="fa-solid fa-compass"></i></span>
+            <h3>Control</h3>
+            <p>A practical system for directing your thoughts, your feelings, and your actions &mdash; no matter what else is going on.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="340">
+          <div class="qp-pillar-card">
+            <span class="qp-pillar-card__badge"><i class="fa-solid fa-feather-pointed"></i></span>
+            <h3>Freedom</h3>
+            <p>Move through responsibility, setbacks, and pressure without losing the person underneath it all.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROGRAMS (SLICK SLIDER) ============ -->
+  <section class="qp-section qp-programs" id="programs">
+    <div class="container">
+      <div class="qp-divider" data-aos="fade-up">
+        <img src="images/logo.png" alt="Divider Image" style="width: 50px; height: auto;">
+      </div>
+      <p class="qp-eyebrow qp-eyebrow--center" data-aos="fade-up">WAYS TO WORK TOGETHER</p>
+      <h2 class="qp-h2 qp-h2--center" data-aos="fade-up" data-aos-delay="80">Executive Coaching Programs</h2>
+
+      <div class="qp-programs__slider" data-aos="fade-up" data-aos-delay="150">
+
+        <div class="qp-program-card">
+          <span class="qp-program-card__price">By Application</span>
+          <h3>1-on-1 Private Mentorship</h3>
+          <p class="qp-program-card__desc">Ongoing, fully personalised coaching for leaders navigating a defining season &mdash; built entirely around your context, with no fixed curriculum.</p>
+          <ul class="qp-program-card__features">
+            <li><i class="fa-solid fa-check"></i> Weekly private sessions</li>
+            <li><i class="fa-solid fa-check"></i> Direct access between sessions</li>
+            <li><i class="fa-solid fa-check"></i> Bespoke Quiet Power roadmap</li>
+          </ul>
+          <a href="#booking" class="qp-btn qp-btn--outline qp-btn--block">Enquire</a>
+        </div>
+
+        <div class="qp-program-card qp-program-card--featured">
+          <span class="qp-program-card__ribbon">Most Requested</span>
+          <span class="qp-program-card__price">By Application</span>
+          <h3>Executive Masterclass</h3>
+          <p class="qp-program-card__desc">An intensive, structured deep-dive into the Quiet Power decision-making system, designed for senior leaders who want the framework, not just the conversation.</p>
+          <ul class="qp-program-card__features">
+            <li><i class="fa-solid fa-check"></i> Half-day private intensive</li>
+            <li><i class="fa-solid fa-check"></i> The full Quiet Power framework</li>
+            <li><i class="fa-solid fa-check"></i> Personal decision-making playbook</li>
+          </ul>
+          <a href="#booking" class="qp-btn qp-btn--primary qp-btn--block">Enquire</a>
+        </div>
+
+        <div class="qp-program-card">
+          <span class="qp-program-card__price">By Application</span>
+          <h3>Advisory Board Coaching</h3>
+          <p class="qp-program-card__desc">Confidential, standing counsel for founders and C-suite leaders who need a steady outside perspective on the decisions only they can make.</p>
+          <ul class="qp-program-card__features">
+            <li><i class="fa-solid fa-check"></i> Monthly strategic sessions</li>
+            <li><i class="fa-solid fa-check"></i> Priority scheduling</li>
+            <li><i class="fa-solid fa-check"></i> Confidential, retainer-based</li>
+          </ul>
+          <a href="#booking" class="qp-btn qp-btn--outline qp-btn--block">Enquire</a>
+        </div>
+
+        <div class="qp-program-card">
+          <span class="qp-program-card__price">Complimentary</span>
+          <h3>Quiet Power Discovery Call</h3>
+          <p class="qp-program-card__desc">A focused 15-minute conversation to explore where you are, where you want to be, and whether this is the right fit &mdash; no obligation.</p>
+          <ul class="qp-program-card__features">
+            <li><i class="fa-solid fa-check"></i> 15 minutes, by video</li>
+            <li><i class="fa-solid fa-check"></i> No pitch, no pressure</li>
+            <li><i class="fa-solid fa-check"></i> Clear next step either way</li>
+          </ul>
+          <a href="#booking" class="qp-btn qp-btn--outline qp-btn--block">Book Now</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CALENDAR & BOOKING ============ -->
+  <section class="qp-section qp-booking" id="booking">
+    <div class="container">
+      <div class="qp-divider qp-divider--light" data-aos="fade-up">
+        <img src="images/logo.png" alt="Divider Image" style="width: 50px; height: auto;">
+      </div>
+      <p class="qp-eyebrow qp-eyebrow--center qp-eyebrow--onDark" data-aos="fade-up">RESERVE YOUR TIME</p>
+      <h2 class="qp-h2 qp-h2--center qp-h2--onDark" data-aos="fade-up" data-aos-delay="80">Book Your Discovery Call</h2>
+      <p class="qp-booking__intro" data-aos="fade-up" data-aos-delay="120">Choose an available date, and Veronica will confirm your session personally within one business day.</p>
+
+      <div class="row qp-booking__row">
+        <div class="col-lg-6" data-aos="fade-right" data-aos-delay="150">
+          <div class="qp-calendar">
+            <div class="qp-calendar__head">
+              <button class="qp-calendar__nav" id="calPrev" aria-label="Previous month"><i class="fa-solid fa-chevron-left"></i></button>
+              <span class="qp-calendar__month" id="calMonth">August 2026</span>
+              <button class="qp-calendar__nav" id="calNext" aria-label="Next month"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="qp-calendar__weekdays">
+              <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+            </div>
+            <div class="qp-calendar__grid" id="calGrid"></div>
+            <div class="qp-calendar__legend">
+              <span><i class="qp-dot qp-dot--available"></i> Available</span>
+              <span><i class="qp-dot qp-dot--selected"></i> Selected</span>
+              <span><i class="qp-dot qp-dot--full"></i> Fully Booked</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="250">
+          <form class="qp-form" id="bookingForm">
+            <div class="qp-form__group">
+              <label for="fName">Full Name</label>
+              <input type="text" id="fName" name="name" placeholder="Your full name" required>
+            </div>
+            <div class="qp-form__group">
+              <label for="fEmail">Email Address</label>
+              <input type="email" id="fEmail" name="email" placeholder="you@company.com" required>
+            </div>
+            <div class="qp-form__group">
+              <label for="fLevel">Executive Level</label>
+              <select id="fLevel" name="level" required>
+                <option value="" disabled selected>Select your level</option>
+                <option>Founder / CEO</option>
+                <option>C-Suite Executive</option>
+                <option>Managing Director</option>
+                <option>Senior Leader / VP</option>
+                <option>Board Member</option>
+              </select>
+            </div>
+            <div class="qp-form__group">
+              <label>Selected Date</label>
+              <input type="text" id="fDate" name="date" placeholder="Choose a date on the calendar" readonly required>
+            </div>
+            <button type="submit" class="qp-btn qp-btn--primary qp-btn--lg qp-btn--block">Confirm Discovery Call</button>
+            <p class="qp-form__note" id="formNote"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="qp-section qp-testimonials" id="testimonials">
+  <div class="container-fluid px-0">
+    
+    <div class="qp-testimonials__header text-center mb-5" data-aos="fade-up">
+      <div class="qp-divider mb-3">
+        <img src="images/logo.png" alt="Divider Image" style="width: 50px; height: auto;">
+      </div>
+      <p class="qp-eyebrow qp-eyebrow--center">TRANSFORMATION STORIES</p>
+      <h2 class="qp-h2 qp-h2--center">What Leaders Say After Reclaiming Their Power</h2>
+    </div>
+
+    <!-- Infinite Marquee Wrapper -->
+    <div class="qp-marquee">
+      <div class="qp-marquee__track">
+        
+        <!-- CARD 1 -->
+        <div class="qp-testimonial-card">
+          <div class="qp-testimonial-card__header">
+            <div class="qp-testimonial-card__stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span class="qp-testimonial-card__mark">&ldquo;</span>
+          </div>
+          <p class="qp-testimonial-card__quote">I came in thinking I needed better tactics. What I left with was ownership &mdash; of my time, my decisions, and my team. Nothing about my calendar has changed. Everything about how I move through it has.</p>
+          <div class="qp-testimonial-card__author">
+            <div class="qp-testimonial-card__avatar">RM</div>
+            <div>
+              <strong>R. Marsh</strong>
+              <span>Chief Executive Officer, Technology</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="qp-testimonial-card">
+          <div class="qp-testimonial-card__header">
+            <div class="qp-testimonial-card__stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span class="qp-testimonial-card__mark">&ldquo;</span>
+          </div>
+          <p class="qp-testimonial-card__quote">Quiet Power didn&rsquo;t give me a script for hard conversations. It gave me a way back to the version of myself who could have them without flinching. That&rsquo;s a different kind of ROI.</p>
+          <div class="qp-testimonial-card__author">
+            <div class="qp-testimonial-card__avatar">JT</div>
+            <div>
+              <strong>J. Tan</strong>
+              <span>Founder &amp; Managing Director</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="qp-testimonial-card">
+          <div class="qp-testimonial-card__header">
+            <div class="qp-testimonial-card__stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span class="qp-testimonial-card__mark">&ldquo;</span>
+          </div>
+          <p class="qp-testimonial-card__quote">Every other coaching engagement I&rsquo;d done added something new to carry. This one removed weight I didn&rsquo;t realise I was still holding from a decade ago. Rare, and worth every session.</p>
+          <div class="qp-testimonial-card__author">
+            <div class="qp-testimonial-card__avatar">AK</div>
+            <div>
+              <strong>A. Kessler</strong>
+              <span>Board Member, Financial Services</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="qp-testimonial-card">
+          <div class="qp-testimonial-card__header">
+            <div class="qp-testimonial-card__stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span class="qp-testimonial-card__mark">&ldquo;</span>
+          </div>
+          <p class="qp-testimonial-card__quote">Veronica doesn&rsquo;t coach from a framework she read about. It comes from something she lived through, and you can feel the difference in every question she asks.</p>
+          <div class="qp-testimonial-card__author">
+            <div class="qp-testimonial-card__avatar">SP</div>
+            <div>
+              <strong>S. Petrov</strong>
+              <span>VP Operations, Global Logistics</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DUPLICATE SET (For Seamless Infinite Loop) -->
+        <div class="qp-testimonial-card" aria-hidden="true">
+          <div class="qp-testimonial-card__header">
+            <div class="qp-testimonial-card__stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <span class="qp-testimonial-card__mark">&ldquo;</span>
+          </div>
+          <p class="qp-testimonial-card__quote">I came in thinking I needed better tactics. What I left with was ownership &mdash; of my time, my decisions, and my team. Nothing about my calendar has changed. Everything about how I move through it has.</p>
+          <div class="qp-testimonial-card__author">
+            <div class="qp-testimonial-card__avatar">RM</div>
+            <div><strong>R. Marsh</strong><span>Chief Executive Officer, Technology</span></div>
+          </div>
+        </div>
+
+        <div class="qp-testimonial-card" aria-hidden="true">
+          <div class="qp-testimonial-card__header">
+            <div class="qp-testimonial-card__stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <span class="qp-testimonial-card__mark">&ldquo;</span>
+          </div>
+          <p class="qp-testimonial-card__quote">Quiet Power didn&rsquo;t give me a script for hard conversations. It gave me a way back to the version of myself who could have them without flinching. That&rsquo;s a different kind of ROI.</p>
+          <div class="qp-testimonial-card__author">
+            <div class="qp-testimonial-card__avatar">JT</div>
+            <div><strong>J. Tan</strong><span>Founder &amp; Managing Director</span></div>
+          </div>
+        </div>
+
+        <div class="qp-testimonial-card" aria-hidden="true">
+          <div class="qp-testimonial-card__header">
+            <div class="qp-testimonial-card__stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <span class="qp-testimonial-card__mark">&ldquo;</span>
+          </div>
+          <p class="qp-testimonial-card__quote">Every other coaching engagement I&rsquo;d done added something new to carry. This one removed weight I didn&rsquo;t realise I was still holding from a decade ago. Rare, and worth every session.</p>
+          <div class="qp-testimonial-card__author">
+            <div class="qp-testimonial-card__avatar">AK</div>
+            <div><strong>A. Kessler</strong><span>Board Member, Financial Services</span></div>
+          </div>
+        </div>
+
+        <div class="qp-testimonial-card" aria-hidden="true">
+          <div class="qp-testimonial-card__header">
+            <div class="qp-testimonial-card__stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <span class="qp-testimonial-card__mark">&ldquo;</span>
+          </div>
+          <p class="qp-testimonial-card__quote">Veronica doesn&rsquo;t coach from a framework she read about. It comes from something she lived through, and you can feel the difference in every question she asks.</p>
+          <div class="qp-testimonial-card__author">
+            <div class="qp-testimonial-card__avatar">SP</div>
+            <div><strong>S. Petrov</strong><span>VP Operations, Global Logistics</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- ============ FAQ ============ -->
+  <section class="qp-section qp-faq" id="faq">
+    <div class="container">
+      <div class="qp-divider qp-divider--light" data-aos="fade-up">
+        <img src="images/logo.png" alt="Divider Image" style="width: 50px; height: auto;">
+      </div>
+      <p class="qp-eyebrow qp-eyebrow--center qp-eyebrow--onDark" data-aos="fade-up">BEFORE YOU BOOK</p>
+      <h2 class="qp-h2 qp-h2--center qp-h2--onDark" data-aos="fade-up" data-aos-delay="80">Executive FAQs</h2>
+
+      <div class="qp-accordion" id="qpAccordion" data-aos="fade-up" data-aos-delay="150">
+
+        <div class="qp-accordion__item">
+          <button class="qp-accordion__trigger" aria-expanded="true">
+            <span>How long does a typical coaching engagement run?</span>
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <div class="qp-accordion__panel">
+            <p>Most private mentorship engagements run for a minimum of three months, with many leaders continuing for a year or longer. Because the work is fully personalised, the pace is set around your season, not a fixed curriculum.</p>
+          </div>
+        </div>
+
+        <div class="qp-accordion__item">
+          <button class="qp-accordion__trigger" aria-expanded="false">
+            <span>Is coaching available online, or only in person?</span>
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <div class="qp-accordion__panel">
+            <p>Both. Veronica works in person with clients based in Perth, Western Australia, and by private video session with executives anywhere in the world. The format doesn&rsquo;t change the depth of the work.</p>
+          </div>
+        </div>
+
+        <div class="qp-accordion__item">
+          <button class="qp-accordion__trigger" aria-expanded="false">
+            <span>What should I expect to invest?</span>
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <div class="qp-accordion__panel">
+            <p>Investment is discussed on application and depends on the program and cadence that fits you. Every engagement begins with a complimentary discovery call so you can make that decision with full clarity, not pressure.</p>
+          </div>
+        </div>
+
+        <div class="qp-accordion__item">
+          <button class="qp-accordion__trigger" aria-expanded="false">
+            <span>How is this different from other executive coaching?</span>
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <div class="qp-accordion__panel">
+            <p>Quiet Power isn&rsquo;t about fixing what&rsquo;s wrong with you. It&rsquo;s a practical decision-making system, built from lived experience, for reconnecting with the power, control, and freedom you already have access to.</p>
+          </div>
+        </div>
+
+        <div class="qp-accordion__item">
+          <button class="qp-accordion__trigger" aria-expanded="false">
+            <span>What happens on the discovery call?</span>
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <div class="qp-accordion__panel">
+            <p>Fifteen focused minutes to understand where you are, what you&rsquo;re navigating, and whether Quiet Power is the right fit. No pitch, no pressure &mdash; just a clear next step either way.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="qp-footer">
+  <div class="container">
+    <div class="row qp-footer__row">
+      
+      <!-- Column 1: Brand Info -->
+      <div class="col-lg-4 col-md-6">
+        <a href="#top" class="qp-brand qp-brand--footer">
+          <span class="qp-brand__mark">
+            <img src="images/logo.png" alt="Quiet Power Logo">
+          </span>
+          <span class="qp-brand__text">
+            <span class="qp-brand__name">Quiet Power</span>
+            <span class="qp-brand__sub">POWER &bull; CONTROL &bull; FREEDOM</span>
+          </span>
+        </a>
+        <p class="qp-footer__desc">Executive coaching with Veronica O&rsquo;Donnell. Reclaiming the power and control that&rsquo;s already yours &mdash; from Perth, Western Australia, to leaders everywhere.</p>
+        <div class="qp-footer__socials">
+          <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://facebook.com" aria-label="Facebook" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+      </div>
+
+      <!-- Column 2: Explore -->
+      <div class="col-lg-2 col-md-6">
+        <h4 class="qp-footer__heading">Explore</h4>
+        <ul class="qp-footer__links">
+          <li><a href="#philosophy">Philosophy</a></li>
+          <li><a href="#pillars">Pillars</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#testimonials">Stories</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Legal -->
+      <div class="col-lg-3 col-md-6">
+        <h4 class="qp-footer__heading">Legal</h4>
+        <ul class="qp-footer__links">
+          <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/terms-and-conditions.html">Terms &amp; Conditions</a></li>
+          <li><a href="/disclaimer.html">Disclaimer</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact -->
+      <div class="col-lg-3 col-md-6">
+        <h4 class="qp-footer__heading">Contact</h4>
+        <ul class="qp-footer__links">
+          <li><i class="fa-solid fa-location-dot"></i> Perth, Western Australia</li>
+          <li><i class="fa-solid fa-envelope"></i> hello@quietpower.co</li>
+          <li><i class="fa-solid fa-globe"></i> Sessions available worldwide</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="qp-footer__bottom">
+      <p>&copy; 2026 Quiet Power. All rights reserved.</p>
+      <p class="qp-footer__credit">Perth, Western Australia &bull; Coaching leaders, globally</p>
+    </div>
+  </div>
+
+  <button class="qp-back-to-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+</footer>
+
+<!-- Hidden SVG symbol defs: the chess-queen brand glyph reused throughout -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="queen-glyph" viewBox="0 0 40 40">
+      <path d="M20 3 L22.2 9.4 L27 5 L26 12 L32 9 L28.5 15.5 L34 15 L28 20 L34 22 L28 24 L31 30 H9 L12 24 L6 22 L12 20 L6 15 L11.5 15.5 L8 9 L14 12 L13 5 L17.8 9.4 Z" fill="currentColor"/>
+      <rect x="8" y="32" width="24" height="3.4" rx="0.6" fill="currentColor"/>
+      <rect x="10.5" y="36" width="19" height="2.4" rx="0.6" fill="currentColor"/>
+    </symbol>
+    <symbol id="queen-glyph-line" viewBox="0 0 600 700">
+      <path d="M300 60 L333 155 L405 85 L390 190 L480 145 L428 235 L510 225 L420 300 L510 330 L420 360 L465 450 H135 L180 360 L90 330 L180 300 L90 225 L172 235 L120 145 L210 190 L195 85 L267 155 Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="120" y="480" width="360" height="50" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="155" y="540" width="290" height="35" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery (required by Slick) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!-- Slick Carousel -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<!-- AOS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<!-- Custom -->
+<script src="script.js"></script>
+</body>
+</html>

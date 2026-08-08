@@ -16,7 +16,6 @@
     initHeaderScroll();
     initBackToTop();
     initSmoothNavigation();
-    initAOS();
     initProgramSlider();
     initTestimonialSlider();
     initCalendar();
@@ -27,87 +26,53 @@
 
 
   /* =========================================================
-     1. THEME TOGGLE
-     ---------------------------------------------------------
-     Handles:
-     - Light theme
-     - Dark theme
-     - LocalStorage persistence
-     - Sun / moon icon state
-     ========================================================= */
+   1. THEME TOGGLE (DEFAULT LIGHT MODE)
+   ========================================================= */
 
-  function initThemeToggle() {
-    const themeToggle = document.getElementById("themeToggle");
+function initThemeToggle() {
+  const themeToggle = document.getElementById("themeToggle");
 
-    if (!themeToggle) {
-      return;
-    }
-
-    const root = document.documentElement;
-    const savedTheme = localStorage.getItem("qp-theme");
-
-    /*
-      If a theme was previously selected,
-      restore it.
-    */
-    if (savedTheme === "dark" || savedTheme === "light") {
-      root.setAttribute("data-theme", savedTheme);
-    }
-
-    /*
-      If there is no saved preference,
-      use the browser's preferred color scheme.
-    */
-    if (!savedTheme) {
-      const prefersDark = window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-      if (prefersDark) {
-        root.setAttribute("data-theme", "dark");
-      } else {
-        root.setAttribute("data-theme", "light");
-      }
-    }
-
-    updateThemeButton();
-
-    themeToggle.addEventListener("click", function () {
-      const currentTheme = root.getAttribute("data-theme");
-      const nextTheme = currentTheme === "dark" ? "light" : "dark";
-
-      root.setAttribute("data-theme", nextTheme);
-
-      localStorage.setItem("qp-theme", nextTheme);
-
-      updateThemeButton();
-    });
-
-
-    function updateThemeButton() {
-      const currentTheme = root.getAttribute("data-theme");
-
-      if (currentTheme === "dark") {
-        themeToggle.setAttribute(
-          "aria-label",
-          "Switch to light theme"
-        );
-        themeToggle.setAttribute(
-          "title",
-          "Switch to light theme"
-        );
-      } else {
-        themeToggle.setAttribute(
-          "aria-label",
-          "Switch to dark theme"
-        );
-        themeToggle.setAttribute(
-          "title",
-          "Switch to dark theme"
-        );
-      }
-    }
+  if (!themeToggle) {
+    return;
   }
 
+  const root = document.documentElement;
+  const savedTheme = localStorage.getItem("qp-theme");
+
+  /*
+    1. Agar user ne pehle se koi theme chuni hui hai, toh wohi load karo.
+    2. Agar pehle se koi saved theme nahi hai, toh DEFAULT LIGHT theme apply karo.
+  */
+  if (savedTheme === "dark" || savedTheme === "light") {
+    root.setAttribute("data-theme", savedTheme);
+  } else {
+    root.setAttribute("data-theme", "light");
+  }
+
+  updateThemeButton();
+
+  themeToggle.addEventListener("click", function () {
+    const currentTheme = root.getAttribute("data-theme");
+    const nextTheme = currentTheme === "dark" ? "light" : "dark";
+
+    root.setAttribute("data-theme", nextTheme);
+    localStorage.setItem("qp-theme", nextTheme);
+
+    updateThemeButton();
+  });
+
+  function updateThemeButton() {
+    const currentTheme = root.getAttribute("data-theme");
+
+    if (currentTheme === "dark") {
+      themeToggle.setAttribute("aria-label", "Switch to light theme");
+      themeToggle.setAttribute("title", "Switch to light theme");
+    } else {
+      themeToggle.setAttribute("aria-label", "Switch to dark theme");
+      themeToggle.setAttribute("title", "Switch to dark theme");
+    }
+  }
+}
 
   /* =========================================================
      2. MOBILE DRAWER
@@ -373,34 +338,6 @@
   }
 
 
-  /* =========================================================
-     6. AOS ANIMATION
-     ---------------------------------------------------------
-     HTML already contains data-aos attributes.
-     ========================================================= */
-
-  function initAOS() {
-    if (typeof AOS === "undefined") {
-      console.warn(
-        "AOS library was not found."
-      );
-
-      return;
-    }
-
-
-    AOS.init({
-      duration: 800,
-      easing: "ease-out-cubic",
-      once: true,
-      offset: 80,
-      disable: function () {
-        return window.matchMedia(
-          "(prefers-reduced-motion: reduce)"
-        ).matches;
-      }
-    });
-  }
 
 
   /* =========================================================
@@ -1251,18 +1188,7 @@ function isValidEmail(email) {
       resizeTimer = setTimeout(
         function () {
 
-          /*
-            Refresh AOS if available.
-          */
-
-          if (
-            typeof AOS !== "undefined" &&
-            typeof AOS.refresh === "function"
-          ) {
-            AOS.refresh();
-          }
-
-
+      
           /*
             Refresh Slick sliders.
           */

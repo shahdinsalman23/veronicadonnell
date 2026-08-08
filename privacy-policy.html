@@ -37,11 +37,13 @@
     </div>
   </div>
 
-  <!-- ============ HEADER ============ -->
-  <header class="qp-header" id="qpHeader">
-    <div class="container">
-      <div class="qp-header__row">
+ <!-- ============ HEADER ============ -->
+<header class="qp-header" id="qpHeader">
+  <div class="container-fluid container-xl">
+    <div class="row align-items-center justify-content-between qp-header__row">
 
+      <!-- Left Column: Brand & Mobile Hamburger -->
+      <div class="col-auto d-flex align-items-center gap-3">
         <button class="qp-hamburger d-lg-none" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -55,8 +57,11 @@
             <span class="qp-brand__sub">POWER &bull; CONTROL &bull; FREEDOM</span>
           </span>
         </a>
+      </div>
 
-        <nav class="qp-nav d-none d-lg-flex">
+      <!-- Center Column: Navigation (Desktop & Large Screens) -->
+      <div class="col-auto d-none d-lg-flex justify-content-center flex-grow-1">
+        <nav class="qp-nav">
           <a href="index.html#philosophy" class="qp-nav__link"><span>Philosophy</span></a>
           <a href="index.html#pillars" class="qp-nav__link"><span>Pillars</span></a>
           <a href="index.html#programs" class="qp-nav__link"><span>Programs</span></a>
@@ -64,18 +69,22 @@
           <a href="index.html#testimonials" class="qp-nav__link"><span>Stories</span></a>
           <a href="index.html#faq" class="qp-nav__link"><span>FAQ</span></a>
         </nav>
+      </div>
 
+      <!-- Right Column: Action Buttons -->
+      <div class="col-auto">
         <div class="qp-header__actions">
           <button class="qp-theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">
             <i class="fa-solid fa-sun qp-theme-toggle__icon qp-theme-toggle__icon--sun"></i>
             <i class="fa-solid fa-moon qp-theme-toggle__icon qp-theme-toggle__icon--moon"></i>
           </button>
-          <a href="index.html#booking" class="qp-btn qp-btn--primary d-none d-md-inline-flex">Book Discovery Call</a>
+          <a href="index.html#booking" class="qp-btn qp-btn--primary d-none d-sm-inline-flex qp-btn--header">Book Discovery Call</a>
         </div>
-
       </div>
+
     </div>
-  </header>
+  </div>
+</header>
 
   <!-- ============ LEGAL HERO SECTION ============ -->
   <section class="qp-legal-hero">
@@ -329,11 +338,11 @@
               <span class="qp-brand__sub">POWER &bull; CONTROL &bull; FREEDOM</span>
             </span>
           </a>
-          <p class="qp-footer__desc">Executive coaching with Veronica O&rsquo;Donnell. Reclaiming the power and control that&rsquo;s already yours &mdash; from Perth, Western Australia, to leaders everywhere.</p>
+          <p class="qp-footer__desc">Executive coaching with Veronica O&rsquo;Donnell. Reclaiming the power and control that&rsquo;s already yours from Perth, Western Australia, to leaders everywhere.</p>
           <div class="qp-footer__socials">
-            <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://facebook.com" aria-label="Facebook" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/in/veronica-o%E2%80%99donnell-7712b4410/" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
+            <!-- <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://facebook.com" aria-label="Facebook" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a> -->
           </div>
         </div>
 
@@ -364,7 +373,7 @@
           <h4 class="qp-footer__heading">Contact</h4>
           <ul class="qp-footer__links">
             <li><i class="fa-solid fa-location-dot"></i> Perth, Western Australia</li>
-            <li><i class="fa-solid fa-envelope"></i> hello@quietpower.co</li>
+            <li><i class="fa-solid fa-envelope"></i><a href="mailto:veronica@quietpower.com.au">veronica@quietpower.com.au</a></li>
             <li><i class="fa-solid fa-globe"></i> Sessions available worldwide</li>
           </ul>
         </div>

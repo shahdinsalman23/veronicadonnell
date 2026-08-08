@@ -50,6 +50,8 @@
   box-sizing: border-box;
 }
 
+
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 110px;
@@ -60,7 +62,7 @@ body {
   background: var(--qp-bg);
   color: var(--qp-text);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   margin: 0 !important;
   transition: background var(--qp-transition), color var(--qp-transition);
 }
@@ -810,6 +812,7 @@ body.qp-no-scroll {
 
 /* ============ SECTION SHELL ============ */
 .qp-section {
+   overflow-x: hidden !important;
   padding: 110px 0;
   position: relative;
 }
